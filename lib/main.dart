@@ -25,8 +25,17 @@ class MainApp extends StatelessWidget {
         appBar: AppBar(
           leadingWidth: 170.0,
           leading: Container(
+            padding: const EdgeInsets.only(
+              left: 20,
+              top: 5,
+              bottom: 5,
+            ),
             alignment: Alignment.centerLeft,
-            child: Image.asset('/assets/images/logos/logo_fomutur.png'),
+            child: const Image(
+              width: double.infinity,
+              height: double.infinity,
+              image: AssetImage('assets/images/logos/fomutur.png'),
+            ),
           ),
           toolbarHeight: AppTheme.realToLogicalPixels(
             realPixels: 83,
@@ -35,7 +44,7 @@ class MainApp extends StatelessWidget {
           backgroundColor: Colors.white,
         ),
         body: Center(
-          child: Text('Hello World!'),
+          child: Text(''),
         ),
       ),
     );

@@ -7,7 +7,7 @@ class AppTheme {
   // Extendiendo la clase estatica ThemeData
   static ThemeData getThemeData() {
     return ThemeData(
-      fontFamily: 'AlcaldiaFont',
+      fontFamily: 'alcaldia_fonts',
       colorScheme: ColorScheme.fromSwatch(
         primarySwatch:
             Colors.grey, // Use a default color for the primary swatch
@@ -31,7 +31,7 @@ class AppTheme {
     required double realPixels,
     required double deviceRatio,
   }) {
-    print('El valor de la variable deviceRatio: ${deviceRatio}');
+    //print('El valor de la variable deviceRatio: ${deviceRatio}');
     return realPixels / deviceRatio;
   }
 }
