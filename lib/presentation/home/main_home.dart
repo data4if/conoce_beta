@@ -8,11 +8,10 @@ class MainHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double sizeWidth = MediaQuery.sizeOf(context).width;
+    print("Size of the screen => " + sizeWidth.toString());
     if (sizeWidth > 600) {
-      // Tablet y/p Computer
       return const WideHome();
     } else {
-      // Mobile Device
       return const NarrowHome();
     }
   }
