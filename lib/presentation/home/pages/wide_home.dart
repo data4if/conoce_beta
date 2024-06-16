@@ -77,59 +77,114 @@ class WideHome extends StatelessWidget {
           ],
         ),
         body: ListView(children: const <Widget>[
-          ImageCarousel(imageUrls: [
-            'assets/images/main_scroll/main_1.jpeg',
-            'assets/images/main_scroll/main_2.jpeg',
-            'assets/images/main_scroll/main_3.jpeg',
-          ])
+          CarouselPage(),
         ]));
   }
 }
 
-class ImageCarousel extends StatefulWidget {
-  final List<String> imageUrls; // List of image URLs
-  const ImageCarousel({Key? key, required this.imageUrls}) : super(key: key);
+class CarouselPage extends StatefulWidget {
+  const CarouselPage({super.key});
 
   @override
-  State<ImageCarousel> createState() => _ImageCarouselState();
+  _CarouselPageState createState() => _CarouselPageState();
 }
 
-class _ImageCarouselState extends State<ImageCarousel> {
+class _CarouselPageState extends State<CarouselPage> {
   int _currentIndex = 0;
-  Timer? _timer;
+
+  final List<String> _imageList = [
+    'assets/images/main_scroll/main_1.jpeg',
+    'assets/images/main_scroll/main_2.jpeg',
+    'assets/images/main_scroll/main_3.jpeg',
+  ];
+
+  Offset _offset = Offset(0.0, 0.0);
 
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(Duration(seconds: 5), (_) {
-      setState(() {
-        _currentIndex = (_currentIndex + 1) % widget.imageUrls.length;
-      });
+    startTimer();
+  }
+
+  void startTimer() {
+    Future.delayed(Duration(seconds: 7), () {
+      if (mounted) {
+        setState(() {
+          _currentIndex = (_currentIndex + 1) % _imageList.length;
+          startTimer();
+        });
+      }
+    });
+  }
+
+  void goToPreviousImage() {
+    setState(() {
+      _currentIndex = (_currentIndex - 1) % _imageList.length;
+    });
+  }
+
+  void goToNextImage() {
+    setState(() {
+      _currentIndex = (_currentIndex + 1) % _imageList.length;
     });
   }
 
   @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200, // Adjust height as needed
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: widget.imageUrls.length,
-        itemBuilder: (context, index) {
-          //
-          return Image(
-            width: 1512,
-            height: double.infinity,
-            image: AssetImage(widget.imageUrls[index]),
-          );
-        },
+    // TODO; Crear la formula para redimensionar los widgets
+    double _imageWidth = MediaQuery.sizeOf(context).width; // Adjust as needed
+    double _imageHeight = _imageWidth / 3; //
+
+    return Stack(alignment: Alignment.center, children: <Widget>[
+      Center(
+        child: Container(
+          color: Colors.green.withOpacity(0.5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              const Column(
+                children: <Widget>[],
+              ),
+              AnimatedSwitcher(
+                duration: Duration(milliseconds: 500),
+                child: Container(
+                  // Use a fixed-size container for consistent dimensions
+                  width: _imageWidth,
+                  height: _imageHeight,
+                  child: Image.asset(
+                    _imageList[_currentIndex],
+                    key: ValueKey(_imageList[_currentIndex]),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                transitionBuilder: (Widget child, Animation<double> animation) {
+                  return FadeTransition(
+                    opacity: animation,
+                    child: child,
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
       ),
-    );
+      Row(
+        children: [
+          IconButton(
+            iconSize: 75.0,
+            color: AppTheme.primaryColor,
+            icon: Icon(Icons.arrow_back),
+            onPressed: goToPreviousImage,
+          ),
+          Spacer(), //TODO Este parametro debe ser dinamico, para que mantenga la proporcion de los elementos
+          IconButton(
+            iconSize: 75.0,
+            color: AppTheme.primaryColor,
+            icon: Icon(Icons.arrow_forward),
+            onPressed: goToNextImage,
+          ),
+        ],
+      )
+    ]);
   }
 }
