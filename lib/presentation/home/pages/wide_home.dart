@@ -168,7 +168,7 @@ class _CarouselPageState extends State<CarouselPage> {
           ),
         ),
       ),
-      Row(
+      /* Row(
         children: [
           IconButton(
             iconSize: 75.0,
@@ -184,7 +184,7 @@ class _CarouselPageState extends State<CarouselPage> {
             onPressed: goToNextImage,
           ),
         ],
-      )
+      ) */
     ]);
   }
 }
