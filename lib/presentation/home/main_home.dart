@@ -1,5 +1,5 @@
-import 'package:conoce_beta/presentation/home/pages/narrow_home.dart';
-import 'package:conoce_beta/presentation/home/pages/wide_home.dart';
+import 'package:conoce_beta/presentation/home/pages/mobile_home.dart';
+import 'package:conoce_beta/presentation/home/pages/web_home.dart';
 import 'package:flutter/material.dart';
 
 class MainHome extends StatelessWidget {
@@ -8,11 +8,11 @@ class MainHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double sizeWidth = MediaQuery.sizeOf(context).width;
-    print("Size of the screen => " + sizeWidth.toString());
+    //print("Size of the screen => " + sizeWidth.toString());
     if (sizeWidth > 600) {
-      return const WideHome();
+      return const WebHome();
     } else {
-      return const NarrowHome();
+      return const MobileHome();
     }
   }
 }
