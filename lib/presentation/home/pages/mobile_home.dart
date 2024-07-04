@@ -1,4 +1,4 @@
-import 'package:conoce_beta/configuration/router/app_router.dart';
+/* import 'package:conoce_beta/configuration/router/app_router.dart';
 import 'package:flutter/material.dart';
 
 class MobileHome extends StatelessWidget {
@@ -14,9 +14,9 @@ class MobileHome extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
-              child: Image.asset('assets/images/logos/fomutur.png'),
-            ),
+            /*  DrawerHeader(
+              child: Image.asset('assets/images/brand/fomutur.png'),
+            ), */
             ListTile(
               title: Text('Iniciar Sesion'),
               subtitle: Text('Conece - Alfa'),
@@ -122,32 +122,24 @@ class _CarouselPageState extends State<CarouselPage> {
                 icon: Icon(Icons.arrow_back,
                     color: Colors.white), // Adjust icon color
               ), */
-              Container(
-                child: AnimatedSwitcher(
-                  duration: Duration(milliseconds: 500),
-                  child: Container(
-                    width: _imageWidth,
-                    height: _imageHeight,
-                    child: Image.asset(
-                      _imageList[_currentIndex],
-                      key: ValueKey(_imageList[_currentIndex]),
-                      fit: BoxFit.cover,
-                    ),
+              AnimatedSwitcher(
+                duration: Duration(milliseconds: 500),
+                child: Container(
+                  width: _imageWidth,
+                  height: _imageHeight,
+                  child: Image.asset(
+                    _imageList[_currentIndex],
+                    key: ValueKey(_imageList[_currentIndex]),
+                    fit: BoxFit.cover,
                   ),
-                  transitionBuilder:
-                      (Widget child, Animation<double> animation) {
-                    return FadeTransition(
-                      opacity: animation,
-                      child: child,
-                    );
-                  },
                 ),
+                transitionBuilder: (Widget child, Animation<double> animation) {
+                  return FadeTransition(
+                    opacity: animation,
+                    child: child,
+                  );
+                },
               ),
-              /* IconButton(
-                onPressed: goToNextImage,
-                icon: Icon(Icons.arrow_forward,
-                    color: Colors.white), // Adjust icon color
-              ), */
             ],
           ),
         ),
@@ -155,3 +147,4 @@ class _CarouselPageState extends State<CarouselPage> {
     );
   }
 }
+ */

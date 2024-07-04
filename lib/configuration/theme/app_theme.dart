@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   // Constante de diseno
-  static final Color primaryColor = const Color.fromRGBO(0, 99, 65, 1);
-  static final Color accentColor = const Color.fromRGBO(239, 185, 38, 1);
+  static const Color primaryColor = Color.fromRGBO(0, 99, 65, 1);
+  static const Color accentColor = Color.fromRGBO(239, 185, 38, 1);
   // Extendiendo la clase estatica ThemeData
   static ThemeData getThemeData() {
     return ThemeData(

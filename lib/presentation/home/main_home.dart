@@ -1,5 +1,6 @@
 import 'package:conoce_beta/presentation/home/pages/mobile_home.dart';
 import 'package:conoce_beta/presentation/home/pages/web_home.dart';
+import 'package:conoce_beta/presentation/home/pages/table_home.dart';
 import 'package:flutter/material.dart';
 
 class MainHome extends StatelessWidget {
@@ -10,9 +11,10 @@ class MainHome extends StatelessWidget {
     double sizeWidth = MediaQuery.sizeOf(context).width;
     //print("Size of the screen => " + sizeWidth.toString());
     if (sizeWidth > 600) {
-      return const WebHome();
+      return const TestHome();
     } else {
-      return const MobileHome();
+      //return const MobileHome();
+      return const TestHome();
     }
   }
 }
