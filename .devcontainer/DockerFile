@@ -1,0 +1,14 @@
+FROM ubuntu:latest
+
+RUN apt-get update && apt-get install -y git curl
+
+# Download and install Flutter SDK
+RUN git clone https://github.com/flutter/flutter.git /flutter
+RUN cd /flutter && git checkout stable && ./flutter/install.sh
+
+WORKDIR /workspace
+
+# Optional: Install additional dependencies
+RUN apt-get install -y some-other-dependency
+
+EXPOSE 5100
