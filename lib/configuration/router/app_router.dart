@@ -5,7 +5,7 @@ final appRouter = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => MainHome(),
+      builder: (context, state) => const MainHome(),
     ),
   ],
 );

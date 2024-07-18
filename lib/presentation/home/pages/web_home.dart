@@ -3,7 +3,7 @@ import 'package:conoce_beta/configuration/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class WebHome extends StatelessWidget {
-  const WebHome({Key? key});
+  const WebHome({super.key, Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class WebHome extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Center(
               child: InkWell(
-                child: Text(
+                child: const Text(
                   '¿Quiénes somos?',
                   style: TextStyle(
                     color: AppTheme.primaryColor,
@@ -49,7 +49,7 @@ class WebHome extends StatelessWidget {
               },
               iconSize: 30.0,
               color: AppTheme.primaryColor,
-              icon: Icon(Icons.person),
+              icon: const Icon(Icons.person),
             ),
           ),
           Padding(
@@ -60,7 +60,7 @@ class WebHome extends StatelessWidget {
               },
               iconSize: 30.0,
               color: AppTheme.primaryColor,
-              icon: Icon(Icons.help),
+              icon: const Icon(Icons.help),
             ),
           ),
         ],
@@ -69,12 +69,12 @@ class WebHome extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            MainPage(),
+            const MainPage(),
             AspectRatio(
               aspectRatio: 9 / 1.2, // Ajusta según la proporción que desees
               child: Container(
                 color: Colors.white,
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Center(
@@ -113,7 +113,7 @@ class WebHome extends StatelessWidget {
 }
 
 class MainPage extends StatefulWidget {
-  MainPage({Key? key});
+  const MainPage({super.key, Key? key});
 
   @override
   _MainPageState createState() => _MainPageState();
@@ -129,7 +129,7 @@ class _MainPageState extends State<MainPage> {
   ];
 
   void startTimer() {
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 5), () {
       if (mounted) {
         setState(() {
           _currentIndex = (_currentIndex + 1) % _imageList.length;

@@ -7,5 +7,5 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(AppWidget());
+  runApp(const AppWidget());
 }

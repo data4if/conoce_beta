@@ -1,5 +1,3 @@
-import 'package:conoce_beta/presentation/home/pages/mobile_home.dart';
-import 'package:conoce_beta/presentation/home/pages/web_home.dart';
 import 'package:conoce_beta/presentation/home/pages/table_home.dart';
 import 'package:flutter/material.dart';
 
