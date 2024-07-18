@@ -1,8 +1,0 @@
-{
-    "name": "Flutter Development Environment",
-    "image": "flutter:stable", // Replace with a specific Flutter image version if needed
-    "forwardPorts": [
-      { "localPort": 5100, "containerPort": 5100 } // Adjust port based on your preference
-    ],
-    "postCreateCommand": "flutter doctor" // Optional: Runs flutter doctor to check for issues
-  }

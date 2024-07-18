@@ -3,7 +3,7 @@ import 'package:conoce_beta/configuration/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class TestHome extends StatelessWidget {
-  const TestHome({super.key, Key? key});
+  const TestHome({super.key});
 
   @override
   Widget build(BuildContext context) {
