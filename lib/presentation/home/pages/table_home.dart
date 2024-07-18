@@ -3,11 +3,11 @@ import 'package:conoce_beta/configuration/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class TestHome extends StatelessWidget {
-  const TestHome({Key? key});
+  const TestHome({super.key, Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Column(
@@ -23,8 +23,10 @@ class TestHome extends StatelessWidget {
 }
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar({super.key});
+
   @override
-  Size get preferredSize => Size.fromHeight(83.0);
+  Size get preferredSize => const Size.fromHeight(83.0);
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +65,7 @@ class NavItem extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
 
-  const NavItem({required this.title, required this.onTap});
+  const NavItem({super.key, required this.title, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -71,16 +73,16 @@ class NavItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Center(
         child: InkWell(
+          onTap: onTap,
           child: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               color: AppTheme.primaryColor,
               fontSize: 20.0,
               fontFamily: 'alcaldia_fonts',
               fontWeight: FontWeight.normal,
             ),
           ),
-          onTap: onTap,
         ),
       ),
     );
@@ -91,7 +93,7 @@ class NavIconButton extends StatelessWidget {
   final IconData icon;
   final VoidCallback onPressed;
 
-  const NavIconButton({required this.icon, required this.onPressed});
+  const NavIconButton({super.key, required this.icon, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -108,13 +110,15 @@ class NavIconButton extends StatelessWidget {
 }
 
 class PresentationSection extends StatelessWidget {
+  const PresentationSection({super.key});
+
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 9 / 1.2, // Ajusta según la proporción que desees
       child: Container(
         color: Colors.white,
-        child: Column(
+        child: const Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
@@ -150,7 +154,7 @@ class PresentationSection extends StatelessWidget {
 }
 
 class MainPage extends StatefulWidget {
-  MainPage({Key? key});
+  const MainPage({super.key, Key? key});
 
   @override
   _MainPageState createState() => _MainPageState();
@@ -166,7 +170,7 @@ class _MainPageState extends State<MainPage> {
   ];
 
   void startTimer() {
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 5), () {
       if (mounted) {
         setState(() {
           _currentIndex = (_currentIndex + 1) % _imageList.length;
@@ -201,17 +205,19 @@ class _MainPageState extends State<MainPage> {
             );
           },
         ),
-        ContentOverlay(),
+        const ContentOverlay(),
       ],
     );
   }
 }
 
 class ContentOverlay extends StatelessWidget {
+  const ContentOverlay({super.key});
+
   @override
   Widget build(BuildContext context) {
-    var realtiime_height = MediaQuery.of(context).size.height;
-    var realtime_width = MediaQuery.of(context).size.width;
+    var realtiimeHeight = MediaQuery.of(context).size.height;
+    var realtimeWidth = MediaQuery.of(context).size.width;
 
     return Stack(
       alignment: Alignment.center,
@@ -232,7 +238,7 @@ class ContentOverlay extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: realtiime_height * 0.1,
+          bottom: realtiimeHeight * 0.1,
           child: RichText(
             text: const TextSpan(
               children: [
